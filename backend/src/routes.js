@@ -18,7 +18,7 @@ routes.post('/ongs', celebrate({
         city: Joi.string().required(),
         uf: Joi.string().required().length(2)
     })
-}),  OngController.create);
+}), OngController.create);
 
 routes.get('/profile', celebrate({
     [Segments.HEADERS]: Joi.object({
