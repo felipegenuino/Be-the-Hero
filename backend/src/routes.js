@@ -26,7 +26,11 @@ routes.get('/profile', celebrate({
     }).unknown(),
 }), ProfileController.index);
 
-routes.get('/incidents', IncidentsController.index);
+routes.get('/incidents', celebrate({
+    [Segments.QUERY]: Joi.object().keys({
+        page: Joi.number()
+    })
+}), IncidentsController.index);
 routes.post('/incidents', IncidentsController.create);
 routes.delete('/incidents/:id', celebrate({
     [Segments.PARAMS]: Joi.object().keys({
